@@ -14,11 +14,12 @@ end
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'bootstrap-sass', '~> 3.1.1.0'
+gem 'uglifier', '>= 1.3.0'
 
-group :assets do
-  gem 'bootstrap-sass', '~> 3.1.1.0'
-  gem 'uglifier', '>= 1.3.0'
-end
+# group :assets do
+
+# end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
