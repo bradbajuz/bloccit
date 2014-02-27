@@ -25,10 +25,10 @@ end
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
+gem 'newrelic_rpm'
 gem 'jquery-rails'
-
 gem 'faker'
+gem 'devise'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
