@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 
-# gem 'cancancan', '~> 1.7'
-
 # Use sqlite3 as the database for Active Record
 group :production do
   gem 'pg'
@@ -14,7 +12,7 @@ group :development do
   gem 'sqlite3'
 end
 
-gem 'bootstrap-sass', '~> 3.1.1.0'
+gem 'bootstrap-sass', '~> 2.3.1.0'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.0'
@@ -29,6 +27,7 @@ gem 'newrelic_rpm'
 gem 'jquery-rails'
 gem 'faker'
 gem 'devise'
+gem 'cancancan'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
