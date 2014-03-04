@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   ROLES = %w[member moderator admin]
   def role?(base_role)
-    role.nil? ? false : ROLES.index(base_role.to.s) <= ROLES.index(role)
+    role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 
   private
