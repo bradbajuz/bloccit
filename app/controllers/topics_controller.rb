@@ -15,12 +15,12 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find(params[:id])
-    authorize! :update, @topic, meassage: "You need to be an admin to do that."
+    authorize! :update, @topic, message: "You need to be an admin to do that."
   end
 
   def create
     @topic = Topic.new(topic_params)
-    authorize! :create, @topic, meassage: "You need to be an admin to do that."
+    authorize! :create, @topic, message: "You need to be an admin to do that."
     if @topic.save
       redirect_to @topic, notice: "Topic was saved successfully."
     else
@@ -42,6 +42,6 @@ class TopicsController < ApplicationController
 
 private
   def topic_params
-    params.require(:topic).permit()
+    params.require(:topic).permit(:name, :public, :description)
   end
 end
