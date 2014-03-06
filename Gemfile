@@ -29,6 +29,7 @@ gem 'jquery-rails'
 gem 'faker'
 gem 'devise'
 gem 'cancancan'
+gem 'redcarpet'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
