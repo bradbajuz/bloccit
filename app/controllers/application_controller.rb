@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
+
+  before_filter :add_allowed_devise_session_params, if: :devise_controller?
+
+  protected
+
+  def add_allowed_devise_session_params
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :avatar, :email, :password, :password_confirmation, :current_password) }
+  end
 end

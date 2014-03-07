@@ -26,6 +26,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to [@topic, @post], notice: "Post was saved successfully."
     else
+      # puts "**** CHECK: #{@post.errors.inspect}"
       flash[:error] = "There was an error saving the post. Please try again."
       render :new
     end
@@ -46,6 +47,6 @@ class PostsController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :topic)
   end
 end
