@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def add_allowed_devise_session_params
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :avatar, :email, :password, :password_confirmation, :current_password) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:image, :name, :avatar, :email, :password, :password_confirmation, :current_password) }
   end
 end
