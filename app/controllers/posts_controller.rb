@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   def show
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
   end
 
   def new
@@ -23,6 +25,7 @@ class PostsController < ApplicationController
     @post.topic = @topic
 
     authorize! :create, @post, message: "You need to be signed up to do that."
+
     if @post.save
       redirect_to [@topic, @post], notice: "Post was saved successfully."
     else
