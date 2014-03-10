@@ -10,7 +10,6 @@
     </div>
   <% end %>
   <%= control_group_tag(comment.errors[:body]) do %>
-    <%= f.label :body, class: 'control-label' %>
     <div class="controls">
       <%= f.text_area :body, rows: 8 %>
     </div>

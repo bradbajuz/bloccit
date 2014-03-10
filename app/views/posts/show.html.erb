@@ -12,17 +12,17 @@
 
     <hr/>
 
+    <div>
+      <h4>New Comment</h4>
+      <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+    </div>
+
+    <hr/>
+
     <h2><%= @comments.count %> Comments</h2>
     <div>  
       <%= render partial: 'comments/comment', collection: @comments, locals: { topic: @topic, post: @post } %>
     </div>
-      <hr/>
-      <br/>
-      <div>
-        <h4>New Comment</h4>
-        <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
-      </div>
-  
   </div>
 
   <div class="span4">
