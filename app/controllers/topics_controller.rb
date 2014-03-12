@@ -5,7 +5,6 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
-    authorize! :create, @topic, message: "You need to be an admin to do that."
   end
 
   def show
@@ -15,12 +14,10 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find(params[:id])
-    authorize! :update, @topic, message: "You need to be an admin to do that."
   end
 
   def create
     @topic = Topic.new(topic_params)
-    authorize! :create, @topic, message: "You need to be an admin to do that."
     if @topic.save
       redirect_to @topic, notice: "Topic was saved successfully."
     else
@@ -31,7 +28,6 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
-    authorize! :update, @topic, message: "You need to own the topic to update it."
     if @topic.update(topic_params)
       redirect_to @topic, notice: "Topic was saved successfully."
     else
@@ -43,7 +39,6 @@ class TopicsController < ApplicationController
   def destroy
     @topic = Topic.find(params[:id])
     name = @topic.name
-    authorize! :destroy, @topic, message: "You need to own the topic to delete it."
     if @topic.destroy
       flash[:notice] = "\"#{name}\" was deleted successfully."
       redirect_to topics_path

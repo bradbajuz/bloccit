@@ -25,7 +25,7 @@ end
 
 gem 'faker'
 gem 'devise'
-gem 'cancancan'
+gem 'pundit'
 gem 'redcarpet'
 gem 'carrierwave'
 gem 'mini_magick'

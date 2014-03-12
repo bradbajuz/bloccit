@@ -1,17 +1,18 @@
 Bloccit::Application.routes.draw do
 
-  get "comments/new"
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}
-
+  resources :posts, only: [:index]
   resources :topics do
-    resources :posts, except: [:index] do
+    resources :posts, except: [:index], controller: 'topics/posts' do
       resources :comments, only: [:create, :destroy]
-      # match '/up-vote', to: 'votes#up_vote', via: :get, as: :up_vote
-      # match '/down-vote', to: 'votes#down_vote', via: :get, as: :down_vote
+      match '/up-vote', to: 'votes#up_vote', as: :up_vote, via: :get
+      match '/down-vote', to: 'votes#down_vote', as: :down_vote, via: :get
     end
   end
 
-  match "about" => 'welcome#about', via: :get
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}
+  resources :users, only: [:show, :index, :update]
+
+  match "about", to: 'welcome#about', via: :get
 
   root to: 'welcome#index'
 end
