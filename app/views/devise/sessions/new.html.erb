@@ -1,27 +1,28 @@
 <h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'}) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="control-group">
-    <%= f.label :email, class: 'control-label' %>
-    <div class="controls">
-      <%= f.email_field :email, :autofocus => true %>
-    </div>
+<div class="row">
+  <div class="col-md-8">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Enter email" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control', placeholder: "Enter password" %>
+      </div>
+      <div class="form-group">
+        <% if devise_mapping.rememberable? -%>
+          <%= f.label :remember_me, class: 'checkbox' do %>
+            <%= f.check_box :remember_me %> Remember me
+          <% end %>
+        <% end %>
+        <%= f.submit "Sign in", class: 'btn btn-success' %>
+      </div>
+      <div class="form-group">
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
   </div>
-  <div class="control-group">
-    <%= f.label :password, class: 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password %>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit "Sign in", class: 'btn' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <%= render "devise/shared/links" %>
-    </div>
-  </div>
-<% end %>
+</div>
