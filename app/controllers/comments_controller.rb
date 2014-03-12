@@ -17,7 +17,6 @@ class CommentsController < ApplicationController
       flash[:error] = "There was an error saving the comment. Please try again."
       render "posts/show"
     end
-
   end
 
   def destroy
@@ -36,7 +35,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :post)
+    params.require(:comment).permit(:body)
   end
 
 end
