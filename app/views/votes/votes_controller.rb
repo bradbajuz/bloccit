@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+
   before_filter :setup
 
   def up_vote
@@ -22,13 +23,13 @@ class VotesController < ApplicationController
 
   def update_vote(new_value)
     if @vote
+      authorize @vote, :update?
       @vote.update_attribute(:value, new_value)
     else
-      @vote = current_user.votes.create(value: new_value, post: @post)
+      @vote = current_user.votes.build(value: new_value, post: @post)
+      authorize @vote, :create?
+      @vote.save
     end
   end
 
-  def vote_params
-    params.require(:vote).permit(:post, :value)
-  end
 end
