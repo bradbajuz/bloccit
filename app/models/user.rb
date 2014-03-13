@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :votes, dependent: :destroy
 
-  before_create :set_member
-
   mount_uploader :avatar, AvatarUploader
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
