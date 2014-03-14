@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :index
+
+  def show
+    @user = User.find(params[:id])
+    authorize @user
+    @posts = @user.posts.(current_user)
+  end
 
   def update
     if current_user.update_attributes(user_params)
