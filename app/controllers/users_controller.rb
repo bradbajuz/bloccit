@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     authorize @user
-    @posts = @user.posts.(current_user)
+    @posts = @user.posts.visible_to(current_user)
   end
 
   def update
