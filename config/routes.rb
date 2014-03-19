@@ -1,7 +1,8 @@
 Bloccit::Application.routes.draw do
 
+  resources :posts, only: [:index]
   resources :topics do
-    resources :posts, except: [:index] do
+    resources :posts, except: [:index], controller: 'topics/posts' do
       resources :comments, only: [:create, :destroy]
       resources :favorites, only: [:create, :destroy]
       get '/up-vote', to: 'votes#up_vote', as: :up_vote
@@ -10,7 +11,7 @@ Bloccit::Application.routes.draw do
   end
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}
-  resources :users, only: [:show, :update]
+  resources :users, only: [:show, :index, :update]
 
   match "about", to: 'welcome#about', via: :get
 

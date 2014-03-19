@@ -25,7 +25,7 @@
     <hr/>
     <h2><%= @comments.count %> Comments</h2>
     <div>  
-      <%= render partial: 'comments/comment', collection: @comments, locals: { topic: @topic, post: @post } %>
+      <%= render partial: 'comments/comment', collection: @comments %>
     </div>
     
     <% if policy(@comment).create? %>
