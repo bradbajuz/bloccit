@@ -13,10 +13,13 @@ class CommentsController < ApplicationController
     authorize @comment
 
     if @comment.save
-      redirect_to [@topic, @post], notice: "Comment was created."
+      flash[:notice] = "Comment was created."
     else
       flash[:error] = "There was an error saving the comment. Please try again."
-      render "posts/show"
+    end
+
+    respond_with(@comment) do |f|
+      f.html { redirect_to [@topic, @post] }
     end
   end
 
