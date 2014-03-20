@@ -10,6 +10,11 @@ group :development do
   gem 'sqlite3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+end
+
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'uglifier', '>= 1.3.0'
