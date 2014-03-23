@@ -6,7 +6,7 @@ describe User do
     before :each do
       post = nil
       topic = create(:topic)
-      @u00 = create(:user) do |user|
+      @u0 = create(:user) do |user|
         post = user.posts.build(attributes_for(:post))
         post.topic = topic
         post.save
